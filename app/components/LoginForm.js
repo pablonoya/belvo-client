@@ -53,7 +53,7 @@ export default function LoginForm() {
         >
           Iniciar sesión
         </button>
-        <p className="text-sm font-light text-gray-500 ">
+        <p className="text-sm font-light text-gray-700 ">
           ¿No tienes una cuenta?{" "}
           <Link
             href={"/register"}
