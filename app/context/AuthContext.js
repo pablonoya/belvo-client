@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 
     if (response.ok) {
       const data = await response.json()
-      localStorage.setItem("token", JSON.stringify(data))
+      localStorage.setItem("token", data.access_token)
       setUser(data)
       setError("")
       router.push("/")
