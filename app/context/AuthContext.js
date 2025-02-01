@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
 
     if (response.status == 401) {
       setError("Usuario o contraseña incorrectos.")
+      return
     }
 
     if (response.ok) {

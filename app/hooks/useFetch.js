@@ -14,7 +14,7 @@ export const useFetch = (endpoint, params) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BELVO_CLIENT_URL}/${endpoint}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BELVO_CLIENT_URL}/${endpoint}/`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,

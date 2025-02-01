@@ -13,7 +13,7 @@ export default function LoginPage() {
     const password = formData.get("password")
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BELVO_CLIENT_URL}/users`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BELVO_CLIENT_URL}/users/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
