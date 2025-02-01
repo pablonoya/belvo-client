@@ -1,14 +1,15 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
+
+import { useAuth } from "../context/AuthContext"
 
 export const useFetch = (endpoint, params) => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  const router = useRouter()
+  const { logout } = useAuth()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,7 @@ export const useFetch = (endpoint, params) => {
         })
 
         if (response.status === 401) {
-          router.push("/login")
+          logout()
         }
 
         if (response.ok) {

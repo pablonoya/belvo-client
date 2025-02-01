@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
   const [error, setError] = useState("")
 
   const router = useRouter()
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
-      setUser(JSON.parse(token))
+      setToken(token)
     }
   }, [])
 
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
     if (response.ok) {
       const data = await response.json()
       localStorage.setItem("token", data.access_token)
-      setUser(data)
+      setToken(data)
       setError("")
       router.push("/")
     }
@@ -45,12 +45,12 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     localStorage.removeItem("token")
-    setUser(null)
+    setToken(null)
     router.push("/login")
   }
 
   return (
-    <AuthContext.Provider value={{ user, error, login, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ token, error, login, logout }}>{children}</AuthContext.Provider>
   )
 }
 
