@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", data.access_token)
       setToken(data)
       setError("")
-      router.push("/")
+      router.push("/institution")
     } else {
       setError(`Error ${response.status}: ${response.statusText}`)
     }

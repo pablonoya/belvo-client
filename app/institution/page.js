@@ -1,4 +1,4 @@
-import InstitutionsGrid from "./components/InstitutionsGrid"
+import InstitutionsGrid from "../components/InstitutionsGrid"
 
 export default function Institutions() {
   return (

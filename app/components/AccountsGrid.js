@@ -5,7 +5,7 @@ import { useFetch } from "@/hooks/useFetch"
 import Loading from "./Loading"
 
 export default function AccountsGrid({ institution }) {
-  const { data, loading, error } = useFetch("accounts?institution=" + institution)
+  const { data, loading, error } = useFetch("accounts", { institution })
 
   if (loading) {
     return <Loading />

@@ -4,7 +4,7 @@ import { useFetch } from "@/hooks/useFetch"
 import Loading from "./Loading"
 
 export default function TransactionsList({ link, account }) {
-  const { data, loading, error } = useFetch(`transactions?link=${link}&account=${account}`)
+  const { data, loading, error } = useFetch("transactions", { link, account })
 
   if (loading) {
     return <Loading />
