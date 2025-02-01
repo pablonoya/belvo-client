@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     formData.append("username", username)
     formData.append("password", password)
 
-    const response = await fetch("http://localhost:8000/token", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BELVO_CLIENT_URL}/token`, {
       method: "POST",
       body: formData,
     })
@@ -40,6 +40,8 @@ export const AuthProvider = ({ children }) => {
       setToken(data)
       setError("")
       router.push("/")
+    } else {
+      setError(`Error ${response.status}: ${response.statusText}`)
     }
   }
 

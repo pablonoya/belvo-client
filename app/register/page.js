@@ -13,7 +13,7 @@ export default function LoginPage() {
     const password = formData.get("password")
 
     try {
-      const response = await fetch("http://localhost:8000/users", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BELVO_CLIENT_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,11 +24,11 @@ export default function LoginPage() {
       if (response.ok) {
         const data = await response.json()
         login(data.username, data.password)
+      } else {
+        setError(`Error ${response.status}: ${response.statusText}`)
       }
     } catch (error) {
       setError(error)
-    } finally {
-      setError("")
     }
   }
 
